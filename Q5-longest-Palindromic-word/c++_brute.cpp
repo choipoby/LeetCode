@@ -11,9 +11,10 @@ string longestPalindrome(string s) {
     string sub, subRev, maxPalindromic;
 
     for(int i=0; i<inputLength; i++) {
-        for(int j=0; j<inputLength-i; j++) {
-            sub = string((const char*)&s[i], j + 1);
+        for(int j=inputLength-i; j>0; j--) {
+            sub = string((const char*)&s[i], j);
             subRev = sub;
+            printf("i %d, j %d, sub %s\n", i, j, sub.c_str());
             std::reverse(std::begin(subRev), std::end(subRev));
             if( (sub == subRev) && (j >= maxCount) ){
                 maxCount = j;
@@ -25,7 +26,7 @@ string longestPalindrome(string s) {
 }
 
 int main() {
-    //string s = "asdfsdfdsfasfsnursesrunasdfdfsdf";
-    string s = "a";
+    string s = "asdfsdfdsfasfsnursesrunasdfdfsdf";
+    //string s = "a";
     printf("%s\n", longestPalindrome(s).c_str());
 }
